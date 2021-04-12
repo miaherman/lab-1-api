@@ -11,11 +11,11 @@ GET http://localhost:3000/api/favoritesweets/2/
 DELETE http://localhost:3000/api/favoritesweets/2/
 
 ###
-PUT http://localhost:3000/api/favoritesweets/5/
+PUT http://localhost:3000/api/favoritesweets/2/
 Content-Type: application/json
 
 {
-    "id": 89,
+    "id": 55,
     "name": "kjjj", 
     "origin": "New Zealand",
     "inventor": "ändraokr"

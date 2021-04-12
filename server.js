@@ -79,6 +79,7 @@ app.delete('/api/favoritesweets/:id', (req, res) => {
     res.json(deletedProduct);
 });
 
+
 //Uppdaterar sötsak
 
 app.put('/api/favoritesweets/:id', (req, res) => {
