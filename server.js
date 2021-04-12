@@ -68,20 +68,34 @@ app.post("/api/favoritesweets/", (req, res) => {
     })
 })
 
-app.delete('/api/favoritesweets/:id', (req, res) => {
-    const index = myfavoritesweets.find(p => p.id == 1);
-    let deletedProduct = myfavoritesweets.splice(index, 1);
+// app.delete('/api/favoritesweets/:id', (req, res) => {
+//     const index = myfavoritesweets.find(p => p.id == 1);
+//     let deletedProduct = myfavoritesweets.splice(index, 1);
     
-    if(!index) {
-        res.status(404).json({"Error": "This sweet does not exist!"});
-        return;
-    }
-    res.json(deletedProduct);
-});
+//     if(!index) {
+//         res.status(404).json({"Error": "This sweet does not exist!"});
+//         return;
+//     }
+//     res.json(deletedProduct);
+// });
 
+app.delete("/api/favoritesweets/:id", (req, res) => {
+    const id = req.params.id;
+    const deletedProduct = myfavoritesweets.find((sweet) => {
+    return sweet.id == id;
+    });
+    if (!deletedProduct) {
+    res.json({ error: `Det finns ingen produkt med id: ${id}` });
+    return;
+    }
+    // Delete
+    const index = myfavoritesweets.indexOf(deletedProduct);
+    myfavoritesweets.splice(index, 1);
+    // Return the same product
+    res.json(deletedProduct);
+    });
 
 //Uppdaterar sötsak
-
 app.put('/api/favoritesweets/:id', (req, res) => {
     let updateSweet = myfavoritesweets.findIndex((sweet) => {
         return sweet.id == req.params.id

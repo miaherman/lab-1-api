@@ -8,17 +8,17 @@ GET http://localhost:3000/api/favoritesweets/2/
 
 ###
 //Tar bort ett visst ID
-DELETE http://localhost:3000/api/favoritesweets/2/
+DELETE http://localhost:3000/api/favoritesweets/7/
 
 ###
-PUT http://localhost:3000/api/favoritesweets/2/
+PUT http://localhost:3000/api/favoritesweets/55/
 Content-Type: application/json
 
 {
     "id": 55,
     "name": "kjjj", 
-    "origin": "New Zealand",
-    "inventor": "ändraokr"
+    "origin": "Newnnn Zealand",
+    "inventor": "änkkkdraokr"
 }
 
 ###
