@@ -4,29 +4,30 @@ GET http://localhost:3000/api/favoritesweets
 ###
 
 //Hämtar ett visst ID
-GET http://localhost:3000/api/favoritesweets/2/
+GET http://localhost:3000/api/favoritesweets/1/
 
 ###
 //Tar bort ett visst ID
-DELETE http://localhost:3000/api/favoritesweets/7/
+DELETE http://localhost:3000/api/favoritesweets/2
 
 ###
-PUT http://localhost:3000/api/favoritesweets/55/
+//Uppdaterar ett objekt
+PUT http://localhost:3000/api/favoritesweets/2/
 Content-Type: application/json
 
 {
-    "id": 55,
+    "id": 5,
     "name": "kjjj", 
     "origin": "Newnnn Zealand",
     "inventor": "änkkkdraokr"
 }
 
 ###
+//Lägger till ett nytt objekt
 POST http://localhost:3000/api/favoritesweets/
 Content-Type: application/json
 
 {
-    "id": 1,
     "name": "kola", 
     "origin": "New Zealand",
     "inventor": "Helen Leach"
