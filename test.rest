@@ -12,14 +12,13 @@ DELETE http://localhost:3000/api/favoritesweets/2
 
 ###
 //Uppdaterar ett objekt
-PUT http://localhost:3000/api/favoritesweets/2/
+PUT http://localhost:3000/api/favoritesweets/3/
 Content-Type: application/json
 
 {
-    "id": 5,
-    "name": "kjjj", 
-    "origin": "Newnnn Zealand",
-    "inventor": "änkkkdraokr"
+    "name": "Change this", 
+    "origin": "Change this",
+    "inventor": "Change this"
 }
 
 ###
@@ -28,8 +27,8 @@ POST http://localhost:3000/api/favoritesweets/
 Content-Type: application/json
 
 {
-    "name": "kola", 
-    "origin": "New Zealand",
-    "inventor": "Helen Leach"
+    "name": "Add a new sweet", 
+    "origin": "New origin",
+    "inventor": "New inventor!"
 
 }

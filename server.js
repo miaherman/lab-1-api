@@ -4,13 +4,19 @@ const app = express();
 const myfavoritesweets = [
   {
     id: 1,
-    name: "kola",
-    origin: "New Zealand",
-    inventor: "Helen Leach",
+    name: "Gelato",
+    origin: "Italy",
+    inventor: "Bernando Buontalenti",
   },
   {
     id: 2,
-    name: "Creme brulee",
+    name: "Creme brulèe",
+    origin: "France",
+    inventor: "Francois Massialot",
+  },
+  {
+    id: 3,
+    name: "Pavlova",
     origin: "New Zealand",
     inventor: "Helen Leach",
   },
@@ -79,42 +85,32 @@ app.delete("/api/favoritesweets/:id", (req, res) => {
   myfavoritesweets.splice(index, 1);
 
   // Returns the deleted product
-  res.status(200).json({"You have deleted this sweet" : deletedProduct});
+  res.status(200).json({ "You have deleted this sweet": deletedProduct });
 });
 
-//Uppdaterar sötsak
 app.put("/api/favoritesweets/:id", (req, res) => {
-  let updateSweet = myfavoritesweets.findIndex((sweet) => {
-    return sweet.id == req.params.id;
-  });
-
-  updateSweet = {
-    id: req.body.id,
-    name: req.body.name,
-    origin: req.body.origin,
-    inventor: req.body.inventor,
-  };
-
   const id = req.params.id;
-  const deletedProduct = myfavoritesweets.find((sweet) => {
-    return sweet.id == id;
+  const foundSweet = myfavoritesweets.find((sweet) => {
+    return sweet.id == id; 
   });
-  if (!deletedProduct) {
-    res.json({ error: `Det finns ingen produkt med id: ${id}` });
-    return;
+
+  if (foundSweet) {
+
+    foundSweet.name = req.body.name;
+
+    foundSweet.origin = req.body.origin;
+
+    foundSweet.inventor = req.body.inventor;
+
+    res.status(201).json(foundSweet);
+
+  } else if (!foundSweet) {
+    res.status(404).json("This id does not exist!");
   }
-
-  let index = myfavoritesweets.findIndex((sweet) => {
-    return sweet.id == req.params.id;
-  });
-
-  myfavoritesweets[index] = updateSweet;
-  return res.status(200).send(myfavoritesweets);
 });
 
 const port = process.env.PORT || 3000;
-
 //lyssnar på servern
 app.listen(port, () => {
-  console.log(`listening to port ${port}`);
+console.log(`listening to port ${port}`);
 });
