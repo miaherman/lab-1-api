@@ -24,12 +24,12 @@ const myfavoritesweets = [
 
 app.use(express.json());
 
-// Visar alla sweets!
+// Shows all sweets!
 app.get("/api/favoritesweets", (req, res) => {
   res.send(myfavoritesweets);
 });
 
-// Hittar sweet by ID
+// Can't find sweet by ID
 app.get("/api/favoritesweets/:id", (req, res) => {
   const sweet = myfavoritesweets.find((c) => c.id === parseInt(req.params.id));
   if (!sweet) res.status(404).send("This sweet does not exist!");
@@ -40,7 +40,7 @@ app.get("/api", (req, res) => {
   res.json(myfavoritesweets);
 });
 
-//Lägger till ny sweet
+//Adds a new sweet
 app.post("/api/favoritesweets/", (req, res) => {
   if (!req.body.name) {
     res.status(404).send("Please add a name!");
@@ -77,7 +77,6 @@ app.delete("/api/favoritesweets/:id", (req, res) => {
   });
   if (!deletedProduct) {
     res.status(404).json(`There's no product with id: ${id}!`);
-    // res.json({ error: `Det finns ingen produkt med id: ${id}` });
     return;
   }
   // Delete
@@ -110,7 +109,8 @@ app.put("/api/favoritesweets/:id", (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-//lyssnar på servern
+
+//Listens to the server
 app.listen(port, () => {
 console.log(`listening to port ${port}`);
 });

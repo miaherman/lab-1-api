@@ -8,11 +8,11 @@ GET http://localhost:3000/api/favoritesweets/1/
 
 ###
 //Tar bort ett visst ID
-DELETE http://localhost:3000/api/favoritesweets/2
+DELETE http://localhost:3000/api/favoritesweets/1
 
 ###
 //Uppdaterar ett objekt
-PUT http://localhost:3000/api/favoritesweets/3/
+PUT http://localhost:3000/api/favoritesweets/33/
 Content-Type: application/json
 
 {
